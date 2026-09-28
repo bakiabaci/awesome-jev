@@ -179,12 +179,12 @@ System One decision models map directly to the five critical execution stages of
 
 ### Stage 2: Context, RAG & Memory Economy
 *Surgically optimizing context windows and retrieval without lossy summarization:*
-* [tamaratran/fast-jev-compaction](https://github.com/tamaratran/fast-jev-compaction) (★7,054) - Replaces lossy LLM compaction with surgical pruning; drops unneeded tool calls while preserving code history verbatim.
+* [tamaratran/fast-jev-compaction](https://github.com/tamaratran/fast-jev-compaction) (★7,055) - Replaces lossy LLM compaction with surgical pruning; drops unneeded tool calls while preserving code history verbatim.
 * [hyperspaceai/jevcache](https://github.com/hyperspaceai/jevcache) (★73) - High-throughput local caching proxy for `(model, schema, state)` tuples; eliminates repeated API billing in CI.
 * [UditAkhourii/quicksilver](https://github.com/UditAkhourii/quicksilver) (★75) - "Read widely, decide narrowly." High-speed triage filtering 187 files down to 4 key candidates before prompting.
 * [tamaratran/jev-pruner](https://github.com/tamaratran/jev-pruner) (★152) - Post-execution hook that prunes command outputs before returning to the model; automatically whitelists errors and diffs.
 * [GhalebDweikat/winnow](https://github.com/GhalebDweikat/winnow) (★95) - Evaluates 25-line text blocks with Jev; stubs irrelevant sections with recall pointers.
-* [dzhng/jevgrep](https://github.com/dzhng/jevgrep) (★1,021) - Semantic code search CLI. Locates files by architectural purpose rather than brittle regex strings.
+* [dzhng/jevgrep](https://github.com/dzhng/jevgrep) (★1,025) - Semantic code search CLI. Locates files by architectural purpose rather than brittle regex strings.
 * [kyu1204/jgrep](https://github.com/kyu1204/jgrep) (★48) - Semantic code search tool matching what code does rather than what it is named.
 * [milvus-io/bootcamp](https://github.com/milvus-io/bootcamp/tree/master/bootcamp/RAG/search_with_jev) - Official Milvus recipes combining vector search with fast Jev reranking, filtering, and search stopping.
 
@@ -207,7 +207,7 @@ System One decision models map directly to the five critical execution stages of
 
 ### Stage 5: High-Speed Vision & Multimodal Loops
 *Sub-100ms visual UI classification and action triage:*
-* [browser-use/jev-ultrafast](https://github.com/browser-use/jev-ultrafast) (**★20,987**) - Ultra-low latency UI classification and action triage for autonomous browser automation.
+* [browser-use/jev-ultrafast](https://github.com/browser-use/jev-ultrafast) (**★20,989**) - Ultra-low latency UI classification and action triage for autonomous browser automation.
 * [v-modal/awesome-jev-tools](https://github.com/v-modal/awesome-jev-tools) (★728) - High-speed multimodal screen parsing and bounding box classification.
 * [jev-chat/jev-chat-windows](https://github.com/jev-chat/jev-chat-windows) (★635) - Real-time screen capture + offline OCR + intent evaluation for desktop UI automation.
 * [brnyxx/jev-ra](https://github.com/brnyxx/jev-ra) (★5) - High-speed browser automation for coding agents, 3–5x faster than conventional browser agents.
@@ -225,16 +225,16 @@ Point your existing SDK client to `http://localhost:8765/v1`:
 export TYPESAFE_BASE_URL="http://127.0.0.1:8765/v1"
 ```
 
-* [jaredpalmer/kev](https://github.com/jaredpalmer/kev) (★7,536) - Drop-in `/v1/systemone` server based on Qwen3.5/3.8 (0.8B–27B). Compatible with TypeSafe SDKs; includes custom fine-tuning recipes.
-* [ollaya-dev/ollaya](https://github.com/ollaya-dev/ollaya) (★767) - "The Ollama for Decision Models." Local daemon for downloading and serving Laya and typed decision models with one command.
+* [jaredpalmer/kev](https://github.com/jaredpalmer/kev) (★7,537) - Drop-in `/v1/systemone` server based on Qwen3.5/3.8 (0.8B–27B). Compatible with TypeSafe SDKs; includes custom fine-tuning recipes.
+* [ollaya-dev/ollaya](https://github.com/ollaya-dev/ollaya) (★768) - "The Ollama for Decision Models." Local daemon for downloading and serving Laya and typed decision models with one command.
 * [feder-cr/jev](https://github.com/feder-cr/jev) (★1,068) - `jevos` GGUF engine running on consumer CPUs in 50–220ms without requiring a dedicated GPU.
 * [razorback16/openjev](https://github.com/razorback16/openjev) (★484) - DiffusionGemma 26B reading directly from probability logits with multimodal image prompt support.
 * [1Panel-dev/laya-server](https://github.com/1Panel-dev/laya-server) (★77) - Dockerized self-hosted Laya server with built-in Web UI and API key management.
 * [allebee/jevk5](https://github.com/allebee/jevk5) (★121) - Apache-2.0 open-weight model with 0.775 accuracy on hard-tier decision evaluations.
 
 ### Open-Weight Decision Models
-* [NandhaKishorM/laya](https://github.com/NandhaKishorM/laya) (**★27,164**) - Foundational open-weight non-autoregressive decision model. 100+ languages in a single forward pass, ~33ms latency. Weights on Hugging Face (`convaiinnovations/laya`).
-* [mizorewww/laya-mlx](https://github.com/mizorewww/laya-mlx) (★6,528) - Optimized Apple Silicon MLX port of Laya weights. 13.4ms median latency with zero token generation overhead.
+* [NandhaKishorM/laya](https://github.com/NandhaKishorM/laya) (**★27,165**) - Foundational open-weight non-autoregressive decision model. 100+ languages in a single forward pass, ~33ms latency. Weights on Hugging Face (`convaiinnovations/laya`).
+* [mizorewww/laya-mlx](https://github.com/mizorewww/laya-mlx) (★6,530) - Optimized Apple Silicon MLX port of Laya weights. 13.4ms median latency with zero token generation overhead.
 * [TianyuCodings/NanoJev](https://github.com/TianyuCodings/NanoJev) (★2,378) - 0.6B parameter ultra-compact replica for microsecond edge triage.
 * [wfzyx/von](https://github.com/wfzyx/von) (★738) - Non-autoregressive model for discrete, probabilistic, and ordinal classification in under 25ms.
 * [nokia-applied-research/AnyJev](https://github.com/nokia-applied-research/AnyJev) (★862) - Conversion framework (Nokia + Tencent) transforming arbitrary existing LLMs into calibrated decision models.

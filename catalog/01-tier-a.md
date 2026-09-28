@@ -20,7 +20,7 @@ Long agent sessions explode in cost and latency due to repetitive tool call outp
 
 | Repository | Stars | Description | Value Proposition |
 | :--- | ---: | :--- | :--- |
-| [tamaratran/fast-jev-compaction](https://github.com/tamaratran/fast-jev-compaction) | 7,054 | Replaces lossy LLM compaction summaries with deterministic Jev decisions. **Never writes summaries**; surgically drops obsolete tool results while preserving verbatim history. | Zero loss of exact code context; Claude Code plugin. |
+| [tamaratran/fast-jev-compaction](https://github.com/tamaratran/fast-jev-compaction) | 7,055 | Replaces lossy LLM compaction summaries with deterministic Jev decisions. **Never writes summaries**; surgically drops obsolete tool results while preserving verbatim history. | Zero loss of exact code context; Claude Code plugin. |
 | [tamaratran/jev-pruner](https://github.com/tamaratran/jev-pruner) | 152 | Post-execution hook that prunes command output before returning to the model. Automatically whitelists errors, JSON, and git diffs. | Keeps raw tool output below token thresholds without polluting reasoning. |
 | [hyperspaceai/jevcache](https://github.com/hyperspaceai/jevcache) | 73 | High-throughput local cache for Jev decisions based on `(model, schema, state)` tuples. Redacts PII before hashing. Deterministic replay for CI. | Eliminates repeated API billing for identical unit evaluations. |
 | [GhalebDweikat/winnow](https://github.com/GhalebDweikat/winnow) | 95 | Splits file reads and grep outputs into ~25-line chunks, querying Jev for relevance probability. Unneeded blocks are stubbed with recall tokens. | Provides fallback to `system-one-adapter` (Haiku) if Jev API is unreachable. |
@@ -31,7 +31,7 @@ Long agent sessions explode in cost and latency due to repetitive tool call outp
 
 | Repository | Stars | Description | Value Proposition |
 | :--- | ---: | :--- | :--- |
-| [dzhng/jevgrep](https://github.com/dzhng/jevgrep) | 1021 | Semantic code search tool. Node 22+, `@dzhng/jevgrep`. Locates exact code blocks via intent queries rather than exact regex patterns. | Solves the "needle in a haystack" file search bottleneck in large repositories. |
+| [dzhng/jevgrep](https://github.com/dzhng/jevgrep) | 1025 | Semantic code search tool. Node 22+, `@dzhng/jevgrep`. Locates exact code blocks via intent queries rather than exact regex patterns. | Solves the "needle in a haystack" file search bottleneck in large repositories. |
 | [reticlehq/reticle](https://github.com/reticlehq/reticle) | 904 | "Agent says done — but is it actually working?" Drives real headless browser and Docker runtimes to verify agent outcomes, returning structured `pass / fail / unknown` with exact line traces. | Verifies runtime truth rather than theoretical code diffs. *(Note: FSL-46d6a0 source-available license)*. |
 | [devagrawal09/jev-review](https://github.com/devagrawal09/jev-review) | 628 | Multi-stage git diff reviewer: Noul risk matrix → file profile classification → severity scoring → routing. | Automated code review with calibrated confidence. |
 | [supercorp-ai/supercov](https://github.com/supercorp-ai/supercov) | 133 | Analyzes code diffs with Jev for security and coverage risks, runs project test suites, and converts uncovered branches into actionable prompts. | Pinpoints untested edge cases automatically. |
