@@ -2,7 +2,7 @@
 
 # Awesome Jev [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-### A curated list of awesome projects, models, libraries, and resources built around TypeSafe Jev, Laya, and the System One typed decision paradigm.
+### A curated list of awesome projects, models, libraries, blueprints, and resources built around TypeSafe Jev, Laya, and the System One typed decision paradigm.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -21,6 +21,8 @@
 - [The 10-Second Mental Model](#the-10-second-mental-model)
 - [Dual-Process Architecture](#dual-process-architecture)
 - [The 3 Typed Primitives](#the-3-typed-primitives)
+- [SDKs by Language & Frameworks](#sdks-by-language--frameworks)
+- [Production Blueprints](#production-blueprints)
 - [Scientific Foundations & Research](#scientific-foundations--research)
 - [Official & Foundational Tooling](#official--foundational-tooling)
 - [Open-Weight Models & Local Runtimes](#open-weight-models--local-runtimes)
@@ -32,6 +34,7 @@
 - [Vision & Computer Use](#vision--computer-use)
 - [Evaluation & Calibration](#evaluation--calibration)
 - [Harness Integration Quickstart](#harness-integration-quickstart)
+- [Official Resources & Community](#official-resources--community)
 - [Contributing](#contributing)
 
 ---
@@ -115,6 +118,89 @@ eval_score = client.decide.score(
     state=pagerduty_alert
 )
 # Returns: eval_score.score = 5
+```
+
+---
+
+## SDKs by Language & Frameworks
+
+### Language Libraries
+* **Python**: `pip install typesafe` — Official TypeSafe SDK for Python with Pydantic integration.
+* **TypeScript / Node.js**: `npm i @typesafe-ai/sdk` — First-class typed SDK with native Zod schema support.
+* **Open Models Python**: `pip install laya` — Direct inference and serving for open-weight Laya models.
+* **Go**: `go get github.com/typesafe-ai/typesafe-go` — High-concurrency client for Go microservices.
+* **Rust**: `typesafe-rs` — Memory-efficient, async Tokio bindings for edge and systems runtimes.
+
+### Framework Adapters
+* **LangChain**: Use `DecisionRunnable` to create deterministic conditional branching and router nodes without invoking LLM chains.
+* **LlamaIndex**: `llama-index-postprocessor-jev-rerank` — Drop-in node postprocessor that scores passage relevance in 70ms before synthesizer execution.
+* **DSPy**: Integrate System One classifiers as fast predictors for assertions and constrained teleprompters.
+* **CrewAI & AutoGen**: Implement pre-action guardrails by hooking `jev.decide.noul` into agent tool execution callbacks.
+
+---
+
+## Production Blueprints
+
+### Blueprint 1: The Sub-100ms Agent Tool Gatekeeper
+Prevent catastrophic execution (e.g., unexpected SQL drops, destructive terminal commands) before they reach your infrastructure:
+
+```python
+from typesafe import TypeSafeClient
+
+client = TypeSafeClient()
+
+def safe_tool_gate(tool_name: str, arguments: dict, user_intent: str) -> bool:
+    """Evaluates safety in 70ms before executing any autonomous tool."""
+    state = {
+        "tool": tool_name,
+        "args": arguments,
+        "intent": user_intent
+    }
+    
+    # 1. Check if the tool invocation adheres strictly to user authorization
+    verdict = client.decide.noul(
+        question="Is this specific tool execution explicitly requested and safe under the given user intent?",
+        state=state
+    )
+    
+    if not verdict.value or verdict.confidence < 0.95:
+        print(f"Blocked tool execution: {tool_name} (Confidence: {verdict.confidence:.2%})")
+        return False
+        
+    return True
+```
+
+### Blueprint 2: High-Speed RAG Passage Triage
+Eliminate irrelevant retrieval noise before prompting your generative LLM:
+
+```python
+def filter_passages(query: str, retrieved_chunks: list[str]) -> list[str]:
+    """Prunes retrieved chunks down to high-confidence evidence in parallel."""
+    relevant_chunks = []
+    
+    for chunk in retrieved_chunks:
+        check = client.decide.noul(
+            question=f"Does this passage contain direct factual evidence to answer: '{query}'?",
+            state=chunk
+        )
+        if check.value and check.confidence >= 0.85:
+            relevant_chunks.append(chunk)
+            
+    return relevant_chunks
+```
+
+### Blueprint 3: Zero-Latency Microservice Router
+Route incoming webhooks or user tickets without paying frontier model costs:
+
+```python
+def dispatch_event(payload: dict) -> str:
+    """Routes payloads to the correct microservice queue in 50ms."""
+    route = client.decide.choice(
+        question="Which system domain does this incoming event belong to?",
+        choices=["billing", "user_auth", "infra_alert", "marketing_spam"],
+        state=payload
+    )
+    return route.choice
 ```
 
 ---
@@ -286,6 +372,15 @@ export TYPESAFE_BASE_URL="http://127.0.0.1:8765/v1"
 
 ---
 
+## Official Resources & Community
+
+* [TypeSafe Official Documentation](https://docs.typesafe.ai) — Official API specifications, SDK guides, and reference models.
+* [TypeSafe Official Cookbooks](https://docs.typesafe.ai/cookbooks) — Worked examples for RAG classification, citation double-checking, and parallel evaluation.
+* [Laya Model Weights on Hugging Face](https://huggingface.co/convaiinnovations/laya) — Direct access to foundational open decision weights.
+* [OpenRouter Jev Cookbook](https://openrouter.ai/docs/cookbook/building-agents/gate-tool-calls-with-jev) — Recipes for tool call gating with confidence thresholds.
+
+---
+
 ## Contributing
 
 Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on formatting, quality standards, and submission guidelines.
@@ -294,5 +389,5 @@ Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for de
 
 ## License
 
-This repository is licensed under the [MIT License](LICENSE).
+This repository is licensed under the [MIT License](LICENSE).  
 Linked projects retain their respective authors' licenses.
