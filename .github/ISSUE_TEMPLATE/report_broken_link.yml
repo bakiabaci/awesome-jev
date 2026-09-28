@@ -1,0 +1,33 @@
+name: Report Broken Link or Deprecated Repo
+description: Report a dead link, deleted repository, or deprecated project
+title: "[Broken Link / Deprecation]: "
+labels: ["maintenance", "broken-link"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Help us keep all links and repository references healthy.
+
+  - type: input
+    id: broken_url
+    attributes:
+      label: Broken URL or Repository
+      placeholder: "e.g. https://github.com/owner/old-repo"
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: Location in Awesome Jev
+      placeholder: "e.g. README.md -> Stage 2, or catalog/01-tier-a.md"
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Issue Description
+      placeholder: "e.g. 404 repository not found, moved to new organization, renamed to X, or archived."
+    validations:
+      required: true

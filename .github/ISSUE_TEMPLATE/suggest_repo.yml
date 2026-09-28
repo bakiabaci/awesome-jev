@@ -1,0 +1,78 @@
+name: Suggest a Repository
+description: Suggest a new repository or tool for the Awesome Jev ecosystem
+title: "[Suggest]: <owner/repo>"
+labels: ["enhancement", "repo-suggestion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping keep the **Awesome Jev & System One** catalog comprehensive and up-to-date!
+        Please fill out the form below. Repositories must align with typed decision models, low-latency agent gating, or `/v1/systemone` compatibility.
+
+  - type: input
+    id: repo_url
+    attributes:
+      label: Repository URL
+      description: Direct link to the GitHub repository.
+      placeholder: https://github.com/owner/repo
+    validations:
+      required: true
+
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Lifecycle Stage or Category
+      description: Where does this project fit in the agent stack?
+      options:
+        - "Stage 1: Ingress, Pre-flight & Fast Routing"
+        - "Stage 2: Context, RAG & Memory Economy"
+        - "Stage 3: Agent Policy & Tool Gating"
+        - "Stage 4: Runtime Verification & Code Intelligence"
+        - "Stage 5: High-Speed Vision & Multimodal Loops"
+        - "Open-Weight Decision Models & Local Runtimes (/v1/systemone)"
+        - "SDKs, Runtimes & Framework Integrations"
+        - "Benchmark & Research Paper"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: primitives
+    attributes:
+      label: Decision Primitives & Interface
+      description: Which typed decision primitive does this project use or support?
+      options:
+        - label: "Choice (Categorical/Intent routing)"
+        - label: "Noul (Multi-label boolean gating/predicates)"
+        - label: "Score (Scalar/Ordinal confidence & ranking)"
+        - label: "Wire compatibility with `/v1/systemone`"
+        - label: "Non-autoregressive / Sub-100ms model weights"
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Short Description
+      description: 1-2 sentences describing exactly what this repository does and which problem it solves (no marketing hype).
+      placeholder: "e.g. High-throughput local caching proxy for decision tuples; eliminates repeated API billing in CI."
+    validations:
+      required: true
+
+  - type: input
+    id: license
+    attributes:
+      label: License
+      description: Project open source license (MIT, Apache-2.0, BSD, MPL, etc.).
+      placeholder: "e.g. MIT"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Verification Checklist
+      options:
+        - label: "The repository has runnable code/examples and clear documentation."
+          required: true
+        - label: "The repository is public and active."
+          required: true
+        - label: "I have confirmed the project meets the typed decision model criteria."
+          required: true
