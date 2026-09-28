@@ -342,10 +342,10 @@ Self-hosted and open-weight models that run locally or implement the `/v1/system
 
 ## Harness Integration Quickstart
 
-### 1. Antigravity (AGY) & Google Gemini
-Antigravity and Google Gemini workflows benefit from offloading binary safety checks and schema triage to Jev before running high-context multimodal reasoning.
+### 1. Antigravity (AGY) & Gemini Environments
+Antigravity and Gemini workflows benefit from offloading binary safety checks and schema triage to Jev via the Model Context Protocol (MCP):
 
-* **AGY MCP Sidecar (`~/.gemini/antigravity/mcp_config.json` or workspace settings):**
+* **AGY & Gemini MCP Configuration (`~/.gemini/antigravity/mcp_config.json` or workspace settings):**
 ```json
 {
   "mcpServers": {
@@ -358,27 +358,6 @@ Antigravity and Google Gemini workflows benefit from offloading binary safety ch
     }
   }
 }
-```
-
-* **Python SDK with Gemini (`google-genai`):**
-```python
-from google import genai
-from typesafe import TypeSafeClient
-
-gemini = genai.Client()
-jev = TypeSafeClient()
-
-# Pre-screen user prompt in 70ms before invoking heavy Gemini reasoning
-triage = jev.decide.noul(
-    question="Does this prompt require complex multi-step reasoning?",
-    state=prompt
-)
-
-if triage.value and triage.confidence > 0.80:
-    response = gemini.models.generate_content(model="gemini-2.5-pro", contents=prompt)
-else:
-    # Direct fast answer or route to lightweight model
-    response = gemini.models.generate_content(model="gemini-2.5-flash", contents=prompt)
 ```
 
 ### 2. OpenAI ChatGPT, Codex & Assistants
