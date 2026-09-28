@@ -342,7 +342,68 @@ Self-hosted and open-weight models that run locally or implement the `/v1/system
 
 ## Harness Integration Quickstart
 
-### 1. OpenCode & Cursor via MCP
+### 1. Antigravity (AGY) & Google Gemini
+Antigravity and Google Gemini workflows benefit from offloading binary safety checks and schema triage to Jev before running high-context multimodal reasoning.
+
+* **AGY MCP Sidecar (`~/.gemini/antigravity/mcp_config.json` or workspace settings):**
+```json
+{
+  "mcpServers": {
+    "jev": {
+      "command": "npx",
+      "args": ["-y", "jev-mcp"],
+      "env": {
+        "TYPESAFE_API_KEY": "${TYPESAFE_API_KEY}"
+      }
+    }
+  }
+}
+```
+
+* **Python SDK with Gemini (`google-genai`):**
+```python
+from google import genai
+from typesafe import TypeSafeClient
+
+gemini = genai.Client()
+jev = TypeSafeClient()
+
+# Pre-screen user prompt in 70ms before invoking heavy Gemini reasoning
+triage = jev.decide.noul(
+    question="Does this prompt require complex multi-step reasoning?",
+    state=prompt
+)
+
+if triage.value and triage.confidence > 0.80:
+    response = gemini.models.generate_content(model="gemini-2.5-pro", contents=prompt)
+else:
+    # Direct fast answer or route to lightweight model
+    response = gemini.models.generate_content(model="gemini-2.5-flash", contents=prompt)
+```
+
+### 2. OpenAI ChatGPT, Codex & Assistants
+Use Jev as an upfront deterministic policy and tool call gate before passing state to GPT-4o or Codex:
+
+```python
+from openai import OpenAI
+from typesafe import TypeSafeClient
+
+openai_client = OpenAI()
+jev = TypeSafeClient()
+
+def execute_agent_step(action_proposal: dict):
+    # Screen tool execution proposals in 70ms before committing destructive operations
+    gate = jev.decide.noul(
+        question="Is this action safe to execute without explicit human approval?",
+        state=action_proposal
+    )
+    if not gate.value:
+        raise PermissionError(f"Action flagged by Jev safety gate: {action_proposal}")
+    
+    # Proceed to OpenAI function call execution
+```
+
+### 3. OpenCode, Cursor & Windsurf via MCP
 Add to your MCP configuration (`opencode.json` or `cursor-settings.json`):
 
 ```json
@@ -358,16 +419,29 @@ Add to your MCP configuration (`opencode.json` or `cursor-settings.json`):
   }
 }
 ```
+*Gives your agent 11 calibrated tools: `jev_noul`, `jev_classify`, `jev_rerank`, `jev_review`, etc.*
 
-### 2. Claude Code Plugin
+### 4. Claude Code & Universal Skills CLI
+Install the official skill package natively:
+
 ```bash
+# Claude Code Plugin
 claude plugin marketplace add typesafe-ai/skills
 claude plugin install typesafe@typesafe-ai
+
+# Codex / Universal Coding Agents (skills.sh)
+npx skills add typesafe-ai/skills --skill typesafe-ai -g
 ```
 
-### 3. Switch to Local Self-Hosted Engine (Kev / Ollaya)
+### 5. Local Offline Runtimes (Kev / Ollaya / jevos)
+Switch any agent or harness from cloud billing to local offline inference:
+
 ```bash
+# Point to your local Kev or Ollaya server
 export TYPESAFE_BASE_URL="http://127.0.0.1:8765/v1"
+
+# Or run CPU-only boolean decisions via jevos (50-220ms)
+uv run jev serve --device cpu --port 8765
 ```
 
 ---
