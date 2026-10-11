@@ -169,47 +169,47 @@ System One decision models map directly to the five critical execution stages of
 
 ### Stage 1: Ingress, Security & Intent Routing
 *Actions taken in the first 50ms before any costly model or database is engaged:*
-* [leepokai/jev-guard](https://github.com/leepokai/jev-guard) (★56) - Pre-execution risk gate evaluating tool calls against 3 safety questions before running.
-* [angel291592/Intent-Router](https://github.com/angel291592/Intent-Router) (★734) - Intent compiler converting vague requests into typed IntentSpec contracts.
-* [vinilana/jev-gateway](https://github.com/vinilana/jev-gateway) (★290) - Fast gateway that intercepts tool-calling reasoning for coding agents.
-* [gargpratyush/jev-router](https://github.com/gargpratyush/jev-router) (★528) - Terminal router selecting between Claude Code and Codex per turn while preserving session state.
-* [nidhi-singh02/agent-router](https://github.com/nidhi-singh02/agent-router) (★100) - Quota-aware router that applies deterministic rules before escalating difficult queries to frontier LLMs.
-* [thruwire/foreman](https://github.com/thruwire/foreman) (★664) - Agent supervisor and software factory foreman powered by typed decisions.
-* [notque/vexjoy-agent](https://github.com/notque/vexjoy-agent) (★425) - Intelligent router dispatching plain-English requests to specialized agents.
+* [leepokai/jev-guard](https://github.com/leepokai/jev-guard) (★63) - Pre-execution risk gate evaluating tool calls against 3 safety questions before running.
+* [angel291592/Intent-Router](https://github.com/angel291592/Intent-Router) (★1,014) - Intent compiler converting vague requests into typed IntentSpec contracts.
+* [vinilana/jev-gateway](https://github.com/vinilana/jev-gateway) (★314) - Fast gateway that intercepts tool-calling reasoning for coding agents.
+* [gargpratyush/jev-router](https://github.com/gargpratyush/jev-router) (★579) - Terminal router selecting between Claude Code and Codex per turn while preserving session state.
+* [nidhi-singh02/agent-router](https://github.com/nidhi-singh02/agent-router) (★113) - Quota-aware router that applies deterministic rules before escalating difficult queries to frontier LLMs.
+* [thruwire/foreman](https://github.com/thruwire/foreman) (★733) - Agent supervisor and software factory foreman powered by typed decisions.
+* [notque/vexjoy-agent](https://github.com/notque/vexjoy-agent) (★441) - Intelligent router dispatching plain-English requests to specialized agents.
 
 ### Stage 2: Context, RAG & Memory Economy
 *Surgically optimizing context windows and retrieval without lossy summarization:*
-* [tamaratran/fast-jev-compaction](https://github.com/tamaratran/fast-jev-compaction) (★7,362) - Replaces lossy LLM compaction with surgical pruning; drops unneeded tool calls while preserving code history verbatim.
+* [tamaratran/fast-jev-compaction](https://github.com/tamaratran/fast-jev-compaction) (★7,575) - Replaces lossy LLM compaction with surgical pruning; drops unneeded tool calls while preserving code history verbatim.
 * [hyperspaceai/jevcache](https://github.com/hyperspaceai/jevcache) (★75) - High-throughput local caching proxy for `(model, schema, state)` tuples; eliminates repeated API billing in CI.
-* [UditAkhourii/quicksilver](https://github.com/UditAkhourii/quicksilver) (★98) - "Read widely, decide narrowly." High-speed triage filtering 187 files down to 4 key candidates before prompting.
-* [tamaratran/jev-pruner](https://github.com/tamaratran/jev-pruner) (★159) - Post-execution hook that prunes command outputs before returning to the model; automatically whitelists errors and diffs.
-* [GhalebDweikat/winnow](https://github.com/GhalebDweikat/winnow) (★101) - Evaluates 25-line text blocks with Jev; stubs irrelevant sections with recall pointers.
-* [dzhng/jevgrep](https://github.com/dzhng/jevgrep) (★2,185) - Semantic code search CLI. Locates files by architectural purpose rather than brittle regex strings.
+* [UditAkhourii/quicksilver](https://github.com/UditAkhourii/quicksilver) (★119) - "Read widely, decide narrowly." High-speed triage filtering 187 files down to 4 key candidates before prompting.
+* [tamaratran/jev-pruner](https://github.com/tamaratran/jev-pruner) (★161) - Post-execution hook that prunes command outputs before returning to the model; automatically whitelists errors and diffs.
+* [GhalebDweikat/winnow](https://github.com/GhalebDweikat/winnow) (★108) - Evaluates 25-line text blocks with Jev; stubs irrelevant sections with recall pointers.
+* [dzhng/jevgrep](https://github.com/dzhng/jevgrep) (★2,554) - Semantic code search CLI. Locates files by architectural purpose rather than brittle regex strings.
 * [kyu1204/jgrep](https://github.com/kyu1204/jgrep) (★59) - Semantic code search tool matching what code does rather than what it is named.
 * [milvus-io/bootcamp](https://github.com/milvus-io/bootcamp/tree/master/bootcamp/RAG/search_with_jev) - Official Milvus recipes combining vector search with fast Jev reranking, filtering, and search stopping.
 
 ### Stage 3: Agent Policy & Tool Gating
 *Enforcing deterministic guardrails on autonomous actions:*
-* [typesafe-ai/skills](https://github.com/typesafe-ai/skills) (★2,564) - **Official** reference skill package. Teaches agents how to formulate typed queries and use decision recipes.
-* [jkudish/jev-mcp](https://github.com/jkudish/jev-mcp) (★490) - Model Context Protocol (MCP) server providing 11 standard decision tools (`jev_noul`, `jev_classify`, `jev_rerank`, `jev_review`, etc.).
-* [itsmostafa/system-one-connector](https://github.com/itsmostafa/system-one-connector) (★340) - Go-based MCP connector providing direct access to low-latency decision models.
-* [shitianfang/jev-use](https://github.com/shitianfang/jev-use) (★44) - Plugin for Claude Code and Codex that delegates steps requiring no text generation to Jev.
+* [typesafe-ai/skills](https://github.com/typesafe-ai/skills) (★2,654) - **Official** reference skill package. Teaches agents how to formulate typed queries and use decision recipes.
+* [jkudish/jev-mcp](https://github.com/jkudish/jev-mcp) (★517) - Model Context Protocol (MCP) server providing 11 standard decision tools (`jev_noul`, `jev_classify`, `jev_rerank`, `jev_review`, etc.).
+* [itsmostafa/system-one-connector](https://github.com/itsmostafa/system-one-connector) (★349) - Go-based MCP connector providing direct access to low-latency decision models.
+* [shitianfang/jev-use](https://github.com/shitianfang/jev-use) (★56) - Plugin for Claude Code and Codex that delegates steps requiring no text generation to Jev.
 * [TheoOliveira/pi-jev](https://github.com/TheoOliveira/pi-jev) (★62) - Semantic tool routing and typed System One decisions for the Pi coding agent.
-* [keeltrace/hermes-nerve](https://github.com/keeltrace/hermes-nerve) (★34) - Supervisory nervous system for Hermes agents, adding typed decision ranking and policy gates.
+* [keeltrace/hermes-nerve](https://github.com/keeltrace/hermes-nerve) (★38) - Supervisory nervous system for Hermes agents, adding typed decision ranking and policy gates.
 
 ### Stage 4: Runtime Verification & Code Intelligence
 *Verifying code correctness with real execution rather than synthetic guessing:*
-* [reticlehq/reticle](https://github.com/reticlehq/reticle) (★1,154) - Runtime verification engine. Drives headless browsers and containers to verify agent completion claims against real outputs, returning structured `pass/fail` with line traces.
-* [supercorp-ai/supercov](https://github.com/supercorp-ai/supercov) (★144) - Evaluates code diffs for uncovered execution branches and converts gaps into targeted test generation prompts.
-* [devagrawal09/jev-review](https://github.com/devagrawal09/jev-review) (★664) - Multi-stage git diff reviewer: Noul risk matrix → file profile classification → severity scoring → routing.
-* [uehaj/jev-semgrep](https://github.com/uehaj/jev-semgrep) (★144) - Multilingual semantic code search matching architectural concepts across 6 programming languages.
+* [reticlehq/reticle](https://github.com/reticlehq/reticle) (★1,204) - Runtime verification engine. Drives headless browsers and containers to verify agent completion claims against real outputs, returning structured `pass/fail` with line traces.
+* [supercorp-ai/supercov](https://github.com/supercorp-ai/supercov) (★152) - Evaluates code diffs for uncovered execution branches and converts gaps into targeted test generation prompts.
+* [devagrawal09/jev-review](https://github.com/devagrawal09/jev-review) (★680) - Multi-stage git diff reviewer: Noul risk matrix → file profile classification → severity scoring → routing.
+* [uehaj/jev-semgrep](https://github.com/uehaj/jev-semgrep) (★149) - Multilingual semantic code search matching architectural concepts across 6 programming languages.
 * [keltokhy/jsort](https://github.com/keltokhy/jsort) (★26) - Sorts and prioritizes compiler warnings, linter feedback, and static analysis outputs by architectural severity.
 
 ### Stage 5: High-Speed Vision & Multimodal Loops
 *Sub-100ms visual UI classification and action triage:*
-* [browser-use/jev-ultrafast](https://github.com/browser-use/jev-ultrafast) (**★21,917**) - Ultra-low latency UI classification and action triage for autonomous browser automation.
-* [v-modal/awesome-jev-tools](https://github.com/v-modal/awesome-jev-tools) (★741) - High-speed multimodal screen parsing and bounding box classification.
-* [jev-chat/jev-chat-windows](https://github.com/jev-chat/jev-chat-windows) (★730) - Real-time screen capture + offline OCR + intent evaluation for desktop UI automation.
+* [browser-use/jev-ultrafast](https://github.com/browser-use/jev-ultrafast) (**★22,566**) - Ultra-low latency UI classification and action triage for autonomous browser automation.
+* [v-modal/awesome-jev-tools](https://github.com/v-modal/awesome-jev-tools) (★744) - High-speed multimodal screen parsing and bounding box classification.
+* [jev-chat/jev-chat-windows](https://github.com/jev-chat/jev-chat-windows) (★787) - Real-time screen capture + offline OCR + intent evaluation for desktop UI automation.
 * [brnyxx/jev-ra](https://github.com/brnyxx/jev-ra) (★4) - High-speed browser automation for coding agents, 3–5x faster than conventional browser agents.
 
 ---
@@ -225,19 +225,19 @@ Point your existing SDK client to `http://localhost:8765/v1`:
 export TYPESAFE_BASE_URL="http://127.0.0.1:8765/v1"
 ```
 
-* [jaredpalmer/kev](https://github.com/jaredpalmer/kev) (★8,372) - Drop-in `/v1/systemone` server based on Qwen3.5/3.8 (0.8B–27B). Compatible with TypeSafe SDKs; includes custom fine-tuning recipes.
-* [ollaya-dev/ollaya](https://github.com/ollaya-dev/ollaya) (★1,164) - "The Ollama for Decision Models." Local daemon for downloading and serving Laya and typed decision models with one command.
-* [feder-cr/jev](https://github.com/feder-cr/jev) (★1,197) - `jevos` GGUF engine running on consumer CPUs in 50–220ms without requiring a dedicated GPU.
-* [razorback16/openjev](https://github.com/razorback16/openjev) (★598) - DiffusionGemma 26B reading directly from probability logits with multimodal image prompt support.
-* [1Panel-dev/laya-server](https://github.com/1Panel-dev/laya-server) (★90) - Dockerized self-hosted Laya server with built-in Web UI and API key management.
-* [allebee/jevk5](https://github.com/allebee/jevk5) (★134) - Apache-2.0 open-weight model with 0.775 accuracy on hard-tier decision evaluations.
+* [jaredpalmer/kev](https://github.com/jaredpalmer/kev) (★8,906) - Drop-in `/v1/systemone` server based on Qwen3.5/3.8 (0.8B–27B). Compatible with TypeSafe SDKs; includes custom fine-tuning recipes.
+* [ollaya-dev/ollaya](https://github.com/ollaya-dev/ollaya) (★1,282) - "The Ollama for Decision Models." Local daemon for downloading and serving Laya and typed decision models with one command.
+* [feder-cr/jev](https://github.com/feder-cr/jev) (★1,285) - `jevos` GGUF engine running on consumer CPUs in 50–220ms without requiring a dedicated GPU.
+* [razorback16/openjev](https://github.com/razorback16/openjev) (★675) - DiffusionGemma 26B reading directly from probability logits with multimodal image prompt support.
+* [1Panel-dev/laya-server](https://github.com/1Panel-dev/laya-server) (★98) - Dockerized self-hosted Laya server with built-in Web UI and API key management.
+* [allebee/jevk5](https://github.com/allebee/jevk5) (★147) - Apache-2.0 open-weight model with 0.775 accuracy on hard-tier decision evaluations.
 
 ### Open-Weight Decision Models
-* [NandhaKishorM/laya](https://github.com/NandhaKishorM/laya) (**★30,510**) - Foundational open-weight non-autoregressive decision model. 100+ languages in a single forward pass, ~33ms latency. Weights on Hugging Face (`convaiinnovations/laya`).
-* [mizorewww/laya-mlx](https://github.com/mizorewww/laya-mlx) (★6,743) - Optimized Apple Silicon MLX port of Laya weights. 13.4ms median latency with zero token generation overhead.
-* [TianyuCodings/NanoJev](https://github.com/TianyuCodings/NanoJev) (★2,487) - 0.6B parameter ultra-compact replica for microsecond edge triage.
-* [wfzyx/von](https://github.com/wfzyx/von) (★829) - Non-autoregressive model for discrete, probabilistic, and ordinal classification in under 25ms.
-* [nokia-applied-research/AnyJev](https://github.com/nokia-applied-research/AnyJev) (★1,028) - Conversion framework (Nokia + Tencent) transforming arbitrary existing LLMs into calibrated decision models.
+* [NandhaKishorM/laya](https://github.com/NandhaKishorM/laya) (**★32,188**) - Foundational open-weight non-autoregressive decision model. 100+ languages in a single forward pass, ~33ms latency. Weights on Hugging Face (`convaiinnovations/laya`).
+* [mizorewww/laya-mlx](https://github.com/mizorewww/laya-mlx) (★6,865) - Optimized Apple Silicon MLX port of Laya weights. 13.4ms median latency with zero token generation overhead.
+* [TianyuCodings/NanoJev](https://github.com/TianyuCodings/NanoJev) (★2,524) - 0.6B parameter ultra-compact replica for microsecond edge triage.
+* [wfzyx/von](https://github.com/wfzyx/von) (★877) - Non-autoregressive model for discrete, probabilistic, and ordinal classification in under 25ms.
+* [nokia-applied-research/AnyJev](https://github.com/nokia-applied-research/AnyJev) (★1,152) - Conversion framework (Nokia + Tencent) transforming arbitrary existing LLMs into calibrated decision models.
 
 ---
 
